@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/book-shop.css">
+    <title>Book Shop</title>
+</head>
+
+<body onload="onInit()">
+    <h1>Welcome to my Book Shop</h1>
+
+    <input class="filter-search" type="text" placeholder="search"
+        onchange="this.title=this.value;onSetFilterBy({search: this.value})">
+
+    <input class="filter-range" type="range" min="1" max="9" value="1"
+        onchange="this.title=this.value;onSetFilterBy({rate: +this.value})">
+
+    <select class="sort-by" onchange="onSetBookSort(this)">
+        <option value=""></option>
+        <option value="title">Title</option>
+        <option value="price">Price</option>
+    </select>
+
+    <div class="new-book" onclick="onAddBook()">Create new book</div>
+    <section class="table-container">
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Actions</th>
+                <th>Rate</th>
+                <th>Rate The Book</th>
+            </thead>
+            <tbody class="table-body">
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <button class="page" onclick="onNextPage()"><span>Next</span></button>
+    </section>
+
+    <section class="list-container hidden">
+        <ul class="books-list"></ul>
+    </section>
+
+    <section>
+        <label class="switch" onclick="onToggleDisplay(event)">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </section>
+
+    <div class="modal">
+        <h2></h2>
+        <h3></h3>
+        <p>Rate The Book</p>
+        <h4></h4>
+        <button onclick="onCloseModal()">Close</button>
+    </div>
+    <div class="user-msg"></div>
+
+    <footer>
+        <table>
+            <thead>
+                <th><span></span>Expensive</th>
+                <th><span></span>Normal</th>
+                <th><span></span>Cheap</th>
+            </thead>
+            <tbody class="table-footer">
+            </tbody>
+        </table>
+    </footer>
+
+    <script src="js/services/util-service.js"></script>
+    <script src="js/services/sortage-service.js"></script>
+    <script src="js/services/book-service.js"></script>
+    <script src="js/book-controller.js"></script>
+</body>
+
+</html>
